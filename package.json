@@ -1,0 +1,32 @@
+{
+    "name": "api",
+    "version": "1.0.0",
+    "description": "Lookit API",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon src/index.js --exec babel-node"
+    },
+    "author": "Ah",
+    "license": "ISC",
+    "dependencies": {
+        "@babel/cli": "^7.22.9",
+        "@babel/core": "^7.22.9",
+        "@babel/node": "^7.22.6",
+        "@babel/plugin-syntax-import-meta": "^7.10.4",
+        "@babel/preset-env": "^7.22.9",
+        "axios": "^1.5.0",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.2",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "express-validator": "^7.0.1",
+        "jsonwebtoken": "^9.0.1",
+        "jwt-simple": "^0.5.6",
+        "moment": "^2.29.4",
+        "morgan": "^1.10.0",
+        "nodemailer": "^6.9.5",
+        "nodemon": "^3.0.1",
+        "stripe": "^13.2.0"
+    }
+}
