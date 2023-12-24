@@ -3,8 +3,10 @@ require('dotenv').config()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+const mongose = require('./libs/connect')
 
 import authRoutes from "./routes/auth.routes"
+import filmsRoutes from "./routes/films.routes"
 
 const app = express()
 
@@ -17,6 +19,7 @@ app.get('/api/v1', (req, res) => {
 })
 
 app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1/films", filmsRoutes)
 
 const port = process.env.NODE_PORT || 8000
 
