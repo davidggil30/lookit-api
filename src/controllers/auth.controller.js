@@ -1,3 +1,5 @@
+const Film = require('../models/Film')
+
 export async function login(req, res){
     const {user, password} = req.body
     if (user === 'adrian' && password === '12345678') {
