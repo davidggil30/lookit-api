@@ -3,6 +3,7 @@ require('dotenv').config()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+const mongose = require("./libs/connect")
 
 import authRoutes from "./routes/auth.routes"
 
