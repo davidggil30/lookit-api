@@ -1,4 +1,5 @@
 const User = require("../models/User")
+import bcrypt from 'bcryptjs'
 
 export async function getUserByEmail(email){
     try{
@@ -11,18 +12,20 @@ export async function getUserByEmail(email){
 
 export async function login(req, res){
     const {name, surname, username, email, password} = req.body
+
     try{
-        const newUser = new User(
+        const hash_password = await bcrypt.hash(password, 12)
+        const newUser = new User(   
             {
                 name: name,
                 surname: surname,
                 username: username,
                 email: email,
-                password: password
+                password: hash_password
             }
         );
         await newUser.save()
-        return res.json({succes: "Usuario registrado correctamente", user: newUser})
+        return res.json({success: "Usuario registrado correctamente"})
     }catch(error){
         return res.status(500).json({error: "Error al guardar en la base de datos"})
     }
