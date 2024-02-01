@@ -6,6 +6,7 @@ const morgan = require('morgan')
 const mongose = require("./libs/connect")
 
 import authRoutes from "./routes/auth.routes"
+import usersRoutes from "./routes/users.routes"
 
 const app = express()
 
@@ -18,6 +19,7 @@ app.get('/api/v1', (req, res) => {
 })
 
 app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1/users", usersRoutes)
 
 const port = process.env.NODE_PORT || 8000
 
