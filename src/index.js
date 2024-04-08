@@ -8,6 +8,7 @@ const mongose = require("./libs/connect")
 import authRoutes from "./routes/auth.routes"
 import usersRoutes from "./routes/users.routes"
 import filmsRoutes from "./routes/films.routes"
+import promoRoutes from "./routes/promo.routes"
 
 const app = express()
 
@@ -22,6 +23,7 @@ app.get('/api/v1', (req, res) => {
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/users", usersRoutes)
 app.use("/api/v1/films", filmsRoutes)
+app.use('/api/v1/promo', promoRoutes)
 
 const port = process.env.NODE_PORT || 8000
 
