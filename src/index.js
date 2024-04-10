@@ -9,6 +9,8 @@ import authRoutes from "./routes/auth.routes"
 import usersRoutes from "./routes/users.routes"
 import filmsRoutes from "./routes/films.routes"
 import packageRoutes from "./routes/package.routes"
+import roomsRoutes from "./routes/rooms.routes"
+import bookedRoomRoutes from "./routes/bookedroom.routes"
 
 const app = express()
 
@@ -24,6 +26,8 @@ app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1/users", usersRoutes)
 app.use("/api/v1/films", filmsRoutes)
 app.use("/api/v1/package", packageRoutes)
+app.use("/api/v1/rooms", roomsRoutes)
+app.use("/api/v1/bookedroom", bookedRoomRoutes)
 
 const port = process.env.NODE_PORT || 8000
 
