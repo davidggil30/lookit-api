@@ -13,7 +13,7 @@ export async function signup(req, res){
                 username: username,
                 email: email,
                 password: hash_password,
-                img: "./img/icon/defaultProfile.png"
+                img: "/img/icon/defaultProfile.png"
             }
         );
         await newUser.save()
