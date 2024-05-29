@@ -13,7 +13,9 @@ export async function signup(req, res){
                 username: username,
                 email: email,
                 password: hash_password,
-                img: "/img/icon/defaultProfile.png"
+                img: "/img/icon/defaultProfile.png",
+                preferences: "undefined",
+                cp: "No definido"
             }
         );
         await newUser.save()
@@ -36,5 +38,19 @@ export async function signin(req, res){
         return res.status(500).json({error: "Datos incorrectos"})
     }catch(error){
         return res.status(500).json({error: "Error de base de datos"})
+    }
+}
+
+export async function update(req, res){
+    const {id, name, surname, preferences, cp} = req.body
+    try{
+        const user = await User.updateOne(
+            {"_id": id},
+            {$set: {"name": name, "surname": surname, "preferences": preferences, "cp": cp}}
+        );
+        return res.status(200).json({success: "Todo bien"})
+    }catch(error){
+        console.log(error)
+        return res.status(500).json(error)
     }
 }

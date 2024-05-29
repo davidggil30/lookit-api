@@ -22,3 +22,16 @@ export function signin(req, res, next){
 
     next()
 }
+
+export function update(req, res, next){
+    const { body } = req
+    const requiredFields = ['id', 'name', 'surname', 'cp', 'preferences']
+    const emptyFields = requiredFields.filter((field) => !body[field])
+    if (emptyFields.length > 0)
+    {
+        console.log(emptyFields)
+        return res.status(400).json({error: "Faltan campos obligatorios", emptyFields})
+    }
+
+    next()
+}
