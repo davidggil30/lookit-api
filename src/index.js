@@ -20,6 +20,10 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(morgan('combined'))
 
+app.get('/', (req, res) => {
+    res.send("Esta es mi API")
+})
+
 app.get('/api/v1', (req, res) => {
     res.json({ ping: 'pong' })
 })

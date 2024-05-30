@@ -4,7 +4,8 @@
     "description": "Lookit API",
     "main": "index.js",
     "scripts": {
-        "dev": "nodemon src/index.js --exec babel-node"
+        "dev": "nodemon src/index.js --exec babel-node",
+        "start": "node index.js"
     },
     "author": "Ah",
     "license": "ISC",
