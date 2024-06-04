@@ -3,7 +3,7 @@ const Film = require('../models/Film')
 export async function getAllFims(req, res){
     try {
         const films = await Film.find();
-        return res.json({newFilms: films, topFilms: films}) // {top: topFilms, new: newFilms, all: allFilms}
+        return res.json({allFilms: films, newFilms: films, topFilms: films}) // {top: topFilms, new: newFilms, all: allFilms}
     } catch (error) {
         console.log(error)
     }

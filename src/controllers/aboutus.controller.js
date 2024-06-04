@@ -22,6 +22,7 @@ export async function getFaqById(req, res){
     }
 }
 
+
 export async function getAllLocations(req, res){
     try {
         const locations = await Location.find();
@@ -29,6 +30,21 @@ export async function getAllLocations(req, res){
     } catch (error) {
         console.log(error);
         return res.status(500).json({ error: 'Error al obtener las ofertas' });
+    }
+}
+
+export async function updateLocations(req, res){
+    const {id, name, openHour, closeHour, phone, numSalas} = req.body
+    console.log(numSalas)
+    try{
+        const result = await Location.updateOne(
+            {"_id": id},
+            {$set: {"mall": name, "openHour": openHour, "closeHour": closeHour, "phone": phone, "numSalas": numSalas}}
+        );
+        return res.status(200).json({success: "Todo bien"})
+    }catch(error){
+        console.log(error)
+        return res.status(500).json(error)
     }
 }
 

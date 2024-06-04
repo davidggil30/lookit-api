@@ -5,7 +5,10 @@ const locationSchema = new Schema({
     mall: String,
     location: String,
     openingHours: String,
-    phone: String 
+    phone: String,
+    openHour: String,
+    closeHour: String,
+    numSalas: Number
 });
 
 // Crear el modelo
