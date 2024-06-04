@@ -4,7 +4,7 @@
     "description": "Lookit API",
     "main": "index.js",
     "scripts": {
-        "dev": "nodemon src/index.js --exec babel-node",
+        "build": "nodemon src/index.js --exec babel-node",
         "vercel-build": "echo hello"
     },
     "author": "Ah",
