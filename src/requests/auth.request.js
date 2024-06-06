@@ -35,3 +35,23 @@ export function update(req, res, next){
 
     next()
 }
+
+export function getUserByUsername(req, res, next){
+    const { body } = req
+    const requiredFields = ['username']
+    const emptyFields = requiredFields.filter((field) => !body[field])
+    if (emptyFields.length > 0)
+        return res.status(400).json({error: "Faltan campos obligatorios", emptyFields})
+
+    next()
+}
+
+export function getUserByEmail(req, res, next){
+    const { body } = req
+    const requiredFields = ['email']
+    const emptyFields = requiredFields.filter((field) => !body[field])
+    if (emptyFields.length > 0)
+        return res.status(400).json({error: "Faltan campos obligatorios", emptyFields})
+
+    next()
+}

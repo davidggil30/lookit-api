@@ -2,8 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const roomSchema = new Schema({
-  nombre:  String,
-  descripcion: String
+  name:  String,
+  capacity: Number,
+  img: String,
+  price: Number,
+  pricePersonExtra: Number,
+  screen: String,
+  sound: String,
+  location: String
 });
 
 // Crear el modelo
