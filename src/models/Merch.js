@@ -9,6 +9,7 @@ const merchSchema = new Schema({
     cantidad_stock: Number,
     estado: String,
     fecha_lazamiento: Date,
+    restricciones: String,
     img: String
 });
 
