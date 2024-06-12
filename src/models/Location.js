@@ -8,7 +8,8 @@ const locationSchema = new Schema({
     phone: String,
     openHour: String,
     closeHour: String,
-    numSalas: Number
+    numSalas: Number,
+    priceTicket: Number
 });
 
 // Crear el modelo
