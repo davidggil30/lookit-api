@@ -54,3 +54,45 @@ export async function update(req, res){
         return res.status(500).json(error)
     }
 }
+
+export async function getUserByUsername(req, res){
+    const {username} = req.body
+    try{
+        const user = await User.findOne({"username": username});
+        console.log(!user)
+        if (user)
+            return res.status(200).json({user:user})
+        return res.status(200).json({user: null})
+    }catch(error){
+        return res.status(500).json({error: "Error de base de datos"})
+    }
+}
+
+export async function getUserByEmail(req, res){
+    const {email} = req.body
+    try{
+        const user = await User.findOne({"email": email});
+        console.log(!user)
+        if (user)
+            return res.status(200).json({user:user})
+        return res.status(200).json({user: null})
+    }catch(error){
+        return res.status(500).json({error: "Error de base de datos"})
+    }
+}
+
+export async function recoverPassword(req, res) {
+    const { email, newPassword } = req.body;
+    try {
+        const user = await User.findOne({ "email": email });
+        if (!user) {
+            return res.status(404).json({ error: "Usuario no encontrado" });
+        }
+        const hash_password = await bcrypt.hash(newPassword, 12);
+        user.password = hash_password;
+        await user.save();
+        return res.status(200).json({ success: "Contraseña actualizada correctamente" });
+    } catch (error) {
+        return res.status(500).json({ error: "Error al actualizar la contraseña" });
+    }
+}

@@ -22,9 +22,10 @@ export async function getPackageById(req, res){
 export async function getPackageByUserId(req, res){
     try {
         const myPackage = await PackageSelected.findOne({"userId": req.body.id});
-        if (myPackage == null)
+        console.log(">>" + req.body.id)
+        if (myPackage == null || new Date(myPackage.ends_at) < new Date(Date.now()))
             return res.json({ref: await Package.findOne({"name": "Free"})})
-        if (myPackage.ends_at < Date.now())
+        if (new Date(myPackage.ends_at) < new Date(Date.now()))
             return res.json({"Default": await Package.findOne({"name": "Free"})})
         const packages = await Package.findById(myPackage.packageId)
         return res.json({MyPackage: myPackage, ref: packages})
@@ -50,16 +51,18 @@ export default function plusMonthNow(numberOfMonths){
 
 export async function setPackage(req, res)
 {
-    const {userId, name, numberOfMonths} = req.body
+    const {userId, packageId} = req.body
+    console.log("sionout >> " + packageId)
     try{
-        const packages = await Package.findOne({name:name})
+        const packages = await Package.findOne({_id: packageId})
+        console.log(packages)
         await PackageSelected.findOneAndDelete({userId: userId})
         const newPackageSelected = new PackageSelected(   
             {
                 packageId: packages._id,
                 userId: userId,
                 created_at: Date.now(),
-                ends_at: Date.parse(plusMonthNow(numberOfMonths)),
+                ends_at: Date.parse(plusMonthNow(1)),
                 freeTicketsCounter: packages.freeTickets,
                 giftTaked: false
             }
@@ -67,6 +70,7 @@ export async function setPackage(req, res)
         await newPackageSelected.save()
         return res.json({success: "Paquete registrado correctamente"})
     }catch(error){
+        console.log(">> " + error)
         return res.status(500).json({error: "Error al guardar en la base de datos"})
     }
 }

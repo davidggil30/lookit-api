@@ -13,6 +13,8 @@ import roomsRoutes from "./routes/rooms.routes"
 import bookedRoomRoutes from "./routes/bookedroom.routes"
 import promoRoutes from "./routes/promo.routes"
 import aboutusRoutes from './routes/aboutus.routes'
+import sessionsRoutes from './routes/session.routes'
+import ticketRoutes from './routes/ticket.routes'
 
 const app = express()
 
@@ -36,6 +38,8 @@ app.use("/api/v1/rooms", roomsRoutes)
 app.use("/api/v1/bookedroom", bookedRoomRoutes)
 app.use('/api/v1/promo', promoRoutes)
 app.use('/api/v1/aboutus', aboutusRoutes)
+app.use('/api/v1/sessions', sessionsRoutes)
+app.use('/api/v1/ticket', ticketRoutes)
 
 const port = process.env.NODE_PORT || 8000
 

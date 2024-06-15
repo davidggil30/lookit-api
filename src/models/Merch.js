@@ -6,9 +6,11 @@ const merchSchema = new Schema({
     tipo: String,
     descripcion: String,
     precio: Number,
-    stock: String,
+    cantidad_stock: Number,
     estado: String,
-    fecha_drop: Date
+    fecha_lazamiento: Date,
+    restricciones: String,
+    img: String
 });
 
 // Crear el modelo
