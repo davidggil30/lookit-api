@@ -58,3 +58,60 @@ export async function getMerchById(req, res){
         console.error(error);
     }
 }
+
+export async function newMerch(req, res){
+    const {nombre, tipo, descripcion, precio, cantidad_stock, estado, fecha_lanzamiento, restricciones, img} = req.body
+    try{
+        const merch = new Merch({
+            nombre: nombre,
+            tipo: tipo,
+            descripcion: descripcion,
+            precio: precio,
+            cantidad_stock: cantidad_stock,
+            estado: estado,
+            fecha_lazamiento: fecha_lanzamiento,
+            restricciones: restricciones,
+            img: img
+        });
+
+        await merch.save();
+        return res.status(200).json({success: "Todo bien"})
+    }catch(error){
+        console.log(error)
+        return res.status(500).json(error)
+    }
+}
+
+export async function updateMerch(req, res){
+    const {id, nombre, tipo, descripcion, precio, cantidad_stock, estado, restricciones, img} = req.body
+    try{
+        await Merch.updateOne(
+            {"_id": id},
+            {$set: {
+                nombre: nombre,
+                tipo: tipo,
+                descripcion: descripcion,
+                precio: precio,
+                cantidad_stock: cantidad_stock,
+                estado: estado,
+                restricciones: restricciones,
+                img: img
+            }}
+        );
+        return res.status(200).json({success: "Todo bien"})
+    }catch(error){
+        console.log(error)
+        return res.status(500).json(error)
+    }
+}
+
+export async function deleteMerch(req, res){
+    const {id} = req.body
+    try{
+        await Merch.deleteOne({"_id": id});
+        return res.status(200).json({success: "Todo bien"})
+    }catch(error){
+        console.log(error)
+        return res.status(500).json(error)
+    }
+}

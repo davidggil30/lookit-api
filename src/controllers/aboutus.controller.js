@@ -34,12 +34,12 @@ export async function getAllLocations(req, res){
 }
 
 export async function updateLocations(req, res){
-    const {id, name, openHour, closeHour, phone, numSalas} = req.body
+    const {id, name, openHour, closeHour, phone, numSalas, priceTicket} = req.body
     console.log(numSalas)
     try{
         const result = await Location.updateOne(
             {"_id": id},
-            {$set: {"mall": name, "openHour": openHour, "closeHour": closeHour, "phone": phone, "numSalas": numSalas}}
+            {$set: {"mall": name, "openHour": openHour, "closeHour": closeHour, "phone": phone, "numSalas": numSalas, "priceTicket": priceTicket}}
         );
         return res.status(200).json({success: "Todo bien"})
     }catch(error){

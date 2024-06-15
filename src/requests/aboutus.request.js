@@ -1,6 +1,6 @@
 export function updateLocations(req, res, next){
     const { body } = req
-    const requiredFields = ['id', 'name', 'openHour', 'closeHour', 'phone', 'numSalas']
+    const requiredFields = ['id', 'name', 'openHour', 'closeHour', 'phone', 'numSalas', 'priceTicket']
     const emptyFields = requiredFields.filter((field) => !body[field])
     if (emptyFields.length > 0)
     {
