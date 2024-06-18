@@ -115,3 +115,20 @@ export async function deleteMerch(req, res){
         return res.status(500).json(error)
     }
 }
+
+export async function changeStock(req, res){
+    const {id, cantidad_stock, num_buy} = req.body
+    console.log(req.body)
+    try{
+        await Merch.updateOne(
+            {"_id": id},
+            {$set: {
+                cantidad_stock: cantidad_stock - num_buy ,
+            }}
+        );
+        return res.status(200).json({success: "Todo bien"})
+    }catch(error){
+        console.log(error)
+        return res.status(500).json(error)
+    }
+}

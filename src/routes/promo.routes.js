@@ -13,5 +13,6 @@ router.get("/merch/detail", promoController.getMerchById)
 router.post("/merch/update", promoRequest.updateMerch, promoController.updateMerch)
 router.post("/merch/new", promoRequest.newMerch, promoController.newMerch)
 router.post("/merch/delete", promoRequest.deleteMerch, promoController.deleteMerch)
+router.post("/merch/buy", promoController.changeStock)
 
 export default router
