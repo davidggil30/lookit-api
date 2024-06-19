@@ -26,7 +26,7 @@ export async function save(req, res){
             hourStart: hourStart,
             hourEnd: hourEnd,
             priceTotal: priceTotal,
-            qrCode: "/qr/lookitQR.png",
+            qrCode: "/qr/lookitqr.png",
             seats: seats
         });
 
